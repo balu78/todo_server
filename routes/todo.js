@@ -4,7 +4,7 @@ const Todo = require("../models/Todo");
 
 router.get('/', async (req,res) => {
     try{
-        const todo = await Todo.find();
+        const todo = await Todo.find({userID: req.user._id});
         res.json(todo);
     }catch(err){
         res.send(err);
